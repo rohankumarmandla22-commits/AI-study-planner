@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101114" />
+    <meta
+      name="description"
+      content="Plan your study sessions, stay focused, and build a steady learning streak."
+    />
+    <title>Studyspace — Focus on what matters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Studyspace home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M7 8.5c4.2-1.6 8.2-1.2 11.6 1.2v15c-3.4-2.4-7.4-2.8-11.6-1.2v-15Z" />
+              <path d="M25 8.5c-2.4-.9-4.5-1.2-6.4-.7v15c1.9-.5 4-.2 6.4.7v-15Z" />
+              <path d="M18.5 9.7v15" />
+            </svg>
+          </span>
+          <span>studyspace<span class="brand-period">.</span></span>
+        </a>
+
+        <div class="sidebar-label">WORKSPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a class="nav-link active" href="#overview" aria-current="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2" /><rect x="13.5" y="3.5" width="7" height="4" rx="2" /><rect x="13.5" y="10.5" width="7" height="10" rx="2" /><rect x="3.5" y="13.5" width="7" height="7" rx="2" /></svg>
+            <span>Overview</span>
+          </a>
+          <a class="nav-link" href="#focus">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M12 7v5l3.2 2" /><path d="M17.8 4.8 20 3" /></svg>
+            <span>Focus timer</span>
+          </a>
+          <a class="nav-link" href="#tasks">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5h11M8 12h11M8 18.5h11" /><path d="m3.5 5.5 1 1 2-2M3.5 12l1 1 2-2M3.5 18.5l1 1 2-2" /></svg>
+            <span>My tasks</span>
+            <span class="nav-count" id="nav-task-count">0</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-label subjects-label">YOUR SUBJECTS</div>
+        <div class="subject-list" id="subject-list" aria-label="Your subjects"></div>
+        <button class="add-subject-link" id="add-subject-button" type="button">
+          <span aria-hidden="true">＋</span> Add a subject
+        </button>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-quote">
+            <span class="quote-sparkle" aria-hidden="true">✦</span>
+            <p>Small steps every day add up to big things.</p>
+            <span class="quote-credit">YOUR DAILY REMINDER</span>
+          </div>
+          <div class="profile">
+            <div class="avatar" aria-hidden="true">S</div>
+            <div><strong>My study space</strong><span>Keep showing up</span></div>
+            <span class="profile-dots" aria-hidden="true">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content" id="overview">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong>Overview</strong></div>
+          <div class="topbar-right">
+            <span class="today-chip"><span class="live-dot"></span><span id="today-label"></span></span>
+            <button class="icon-button sound-toggle" id="sound-toggle" type="button" aria-label="Mute timer sound" title="Toggle timer sound">
+              <svg class="sound-on-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9.2 9.2 0 0 1 0 13" /></svg>
+            </button>
+          </div>
+        </header>
+
+        <section class="welcome-row">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL STUDY SPACE</div>
+            <h1>Make today <span>count.</span></h1>
+            <p class="welcome-copy">A little focus goes a long way. Ready to get started?</p>
+          </div>
+          <div class="welcome-illustration" aria-hidden="true">
+            <span class="sun-glow"></span>
+            <div class="plant-pot"><i></i><i></i><i></i><b></b></div>
+            <div class="book-stack"><i></i><i></i><i></i></div>
+            <div class="tiny-star star-one">✦</div><div class="tiny-star star-two">✧</div>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Study statistics">
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-icon streak-icon">✦</span><span class="stat-caption">CONSISTENCY</span><span class="stat-more">···</span></div>
+            <div class="stat-value"><span id="streak-count">0</span><span class="stat-unit">days</span><span class="streak-flame" aria-hidden="true">✷</span></div>
+            <div class="stat-foot"><span class="stat-emphasis">Study streak</span><span>Keep the momentum</span></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-icon focus-icon">◷</span><span class="stat-caption">DEEP WORK</span><span class="stat-more">···</span></div>
+            <div class="stat-value"><span id="total-minutes">0</span><span class="stat-unit">min</span></div>
+            <div class="stat-foot"><span class="stat-emphasis">Total focus time</span><span>Every minute matters</span></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-icon task-icon">✓</span><span class="stat-caption">ON YOUR LIST</span><span class="stat-more">···</span></div>
+            <div class="stat-value"><span id="tasks-done">0</span><span class="stat-divider">/</span><span class="stat-total" id="tasks-total">0</span></div>
+            <div class="stat-foot"><span class="stat-emphasis">Tasks completed</span><span id="tasks-left">Ready when you are</span></div>
+          </article>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="panel timer-panel" id="focus">
+            <div class="panel-heading">
+              <div><div class="eyebrow panel-eyebrow">FIND YOUR FLOW</div><h2>Focus timer</h2></div>
+              <button class="subtle-icon-button" id="timer-settings" type="button" aria-label="Customize timer durations" title="Customize timer durations">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" /><path d="m19.4 15 .1.1 1.3 1-1.5 2.6-1.6-.6a7.8 7.8 0 0 1-1.5.9l-.2 1.7h-3l-.2-1.7a7.8 7.8 0 0 1-1.5-.9l-1.6.6-1.5-2.6 1.3-1a7.4 7.4 0 0 1 0-1.8l-1.3-1 1.5-2.6 1.6.6a7.8 7.8 0 0 1 1.5-.9l.2-1.7h3l.2 1.7a7.8 7.8 0 0 1 1.5.9l1.6-.6 1.5 2.6-1.3 1a7.4 7.4 0 0 1-.1 1.7Z" /></svg>
+              </button>
+            </div>
+
+            <div class="timer-tabs" role="tablist" aria-label="Timer mode">
+              <button class="timer-tab selected" type="button" role="tab" aria-selected="true" data-mode="focus">Focus</button>
+              <button class="timer-tab" type="button" role="tab" aria-selected="false" data-mode="short">Short break</button>
+              <button class="timer-tab" type="button" role="tab" aria-selected="false" data-mode="long">Long break</button>
+            </div>
+
+            <div class="timer-display-wrap">
+              <div class="timer-ring" id="timer-ring">
+                <svg viewBox="0 0 240 240" aria-hidden="true">
+                  <circle class="ring-track" cx="120" cy="120" r="109" />
+                  <circle class="ring-progress" id="ring-progress" cx="120" cy="120" r="109" />
+                </svg>
+                <div class="timer-center">
+                  <span class="timer-mode-label" id="timer-mode-label">TIME TO FOCUS</span>
+                  <span class="timer-time" id="timer-time">25:00</span>
+                  <span class="timer-hint" id="timer-hint"><span class="hint-dot"></span>Ready when you are</span>
+                </div>
+              </div>
+              <div class="timer-decor timer-decor-left" aria-hidden="true">✳</div>
+              <div class="timer-decor timer-decor-right" aria-hidden="true">✦</div>
+            </div>
+
+            <div class="timer-actions">
+              <button class="reset-button" id="reset-timer" type="button" aria-label="Reset timer" title="Reset timer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 11a7.5 7.5 0 1 1 1.6 5.7" /><path d="M4.5 5.5V11H10" /></svg></button>
+              <button class="start-button" id="start-timer" type="button"><span class="start-icon" aria-hidden="true">▶</span><span>Start focus</span></button>
+              <button class="skip-button" id="skip-timer" type="button" aria-label="Skip timer" title="Skip to next mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 10 7-10 7V5ZM19 5v14" /></svg></button>
+            </div>
+            <p class="timer-footer"><span class="mini-check">✓</span> You’ve got this. One step at a time.</p>
+          </section>
+
+          <section class="panel tasks-panel" id="tasks">
+            <div class="panel-heading tasks-heading">
+              <div><div class="eyebrow panel-eyebrow">MAKE IT HAPPEN</div><h2>Today’s tasks <span class="heading-count" id="heading-task-count">0</span></h2></div>
+              <button class="add-task-button" id="open-task-form" type="button"><span aria-hidden="true">＋</span> Add task</button>
+            </div>
+
+            <form class="task-form" id="task-form" hidden>
+              <label class="sr-only" for="task-title">Task name</label>
+              <input id="task-title" name="title" maxlength="100" placeholder="What do you need to do?" required />
+              <div class="form-controls">
+                <label class="sr-only" for="task-subject">Subject</label>
+                <select id="task-subject" name="subject"></select>
+                <label class="sr-only" for="task-priority">Priority</label>
+                <select id="task-priority" name="priority">
+                  <option value="medium">Medium</option><option value="high">High</option><option value="low">Low</option>
+                </select>
+                <button class="form-submit" type="submit">Add</button>
+                <button class="form-cancel" id="cancel-task-form" type="button" aria-label="Cancel adding task">×</button>
+              </div>
+            </form>
+
+            <div class="task-toolbar">
+              <div class="task-filters" role="group" aria-label="Filter tasks">
+                <button class="filter-button active" type="button" data-filter="all">All <span id="filter-all-count">0</span></button>
+                <button class="filter-button" type="button" data-filter="active">In progress</button>
+                <button class="filter-button" type="button" data-filter="completed">Completed</button>
+              </div>
+              <span class="task-day-label"><span class="calendar-icon">▦</span> TODAY</span>
+            </div>
+            <div class="task-list" id="task-list"></div>
+            <div class="empty-state" id="empty-state">
+              <span class="empty-icon" aria-hidden="true">✧</span>
+              <strong id="empty-title">A fresh start.</strong>
+              <span id="empty-copy">Add your first task and make it happen.</span>
+              <button type="button" id="empty-add-task">Create a task <span aria-hidden="true">→</span></button>
+            </div>
+            <div class="task-panel-footer"><span><span class="footer-check">✓</span> Progress, not perfection.</span><span id="remaining-label">0 tasks left</span></div>
+          </section>
+        </div>
+
+        <footer class="page-footer"><span>Made for your best work <span aria-hidden="true">✦</span></span><span>Take a breath. You’re right where you need to be.</span></footer>
+      </main>
+    </div>
+
+    <dialog class="settings-dialog" id="settings-dialog" aria-labelledby="settings-title">
+      <form method="dialog" id="settings-form">
+        <div class="dialog-heading"><div><div class="eyebrow panel-eyebrow">MAKE IT YOURS</div><h2 id="settings-title">Timer settings</h2></div><button class="dialog-close" value="cancel" aria-label="Close settings">×</button></div>
+        <p class="dialog-copy">Choose the session lengths that work best for you.</p>
+        <div class="duration-fields">
+          <label>Focus <span><input id="focus-duration" type="number" min="1" max="180" required /> <small>min</small></span></label>
+          <label>Short break <span><input id="short-duration" type="number" min="1" max="60" required /> <small>min</small></span></label>
+          <label>Long break <span><input id="long-duration" type="number" min="1" max="90" required /> <small>min</small></span></label>
+        </div>
+        <div class="dialog-actions"><button class="cancel-settings" value="cancel">Cancel</button><button class="save-settings" id="save-settings" value="save">Save changes</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="settings-dialog subject-dialog" id="subject-dialog" aria-labelledby="subject-dialog-title">
+      <form method="dialog" id="subject-form">
+        <div class="dialog-heading"><div><div class="eyebrow panel-eyebrow">STAY ORGANIZED</div><h2 id="subject-dialog-title">Add a subject</h2></div><button class="dialog-close" value="cancel" aria-label="Close">×</button></div>
+        <p class="dialog-copy">Create a subject to keep related tasks together.</p>
+        <label class="subject-name-label" for="subject-name">Subject name</label>
+        <input class="subject-name-input" id="subject-name" maxlength="32" placeholder="e.g. Biology" required />
+        <div class="dialog-actions"><button class="cancel-settings" value="cancel">Cancel</button><button class="save-settings" id="save-subject" value="save">Add subject</button></div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
